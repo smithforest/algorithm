@@ -12,6 +12,11 @@ int initSqlList(SqlList *L) {
     return 1;
 }
 
+/**
+ * index和length 比实际索引>1
+ *  index: 0 1 2 3
+ *  data:  1 2 3 4
+ */
 int insertSqlList(SqlList *L, int index, int value) {
     if (index < 1 || index > L->length + 1) {
         return 0;
@@ -19,12 +24,50 @@ int insertSqlList(SqlList *L, int index, int value) {
     if (L->length >= MAX_SIZE) {
         return 0;
     }
-    for (int i = L->length; i >= index; --i) {
+    for (int i = L->length; i >= index; i++) {
         L->data[i] = L->data[i - 1];
     }
     L->data[index - 1] = value;
+    L->length++;
     return 1;
 }
+
+/**
+ * index和length 比实际索引>1
+ *  index: 0 1 2 3
+ *  data:  1 2 3 4
+ */
+int deleteElement(SqlList *L, int index) {
+    if (index < 1 || index > L->length) {
+        return 0;
+    }
+    for (int i = index - 1; i < L->length; ++i) {
+        L->data[i] = L->data[i + 1];
+    }
+    L->length--;
+    return 1;
+}
+
+int findElement(SqlList *L, int value) {
+    for (int i = 0; i < L->length; ++i) {
+        if (L->data[i] == value) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+void reverse_list(SqlList *L) {
+};
+
+int delete_range(SqlList *L, int i, int j) {
+    return 1;
+};
+
+int partition(SqlList *L, int low, int high) {
+    return 1;
+};
+
 
 void printSqlList(SqlList *L) {
     for (int i = 0; i < L->length; ++i) {
