@@ -48,6 +48,7 @@ int deleteElement(SqlList *L, int index) {
     return 1;
 }
 
+
 int findElement(SqlList *L, int value) {
     for (int i = 0; i < L->length; ++i) {
         if (L->data[i] == value) {
@@ -56,16 +57,56 @@ int findElement(SqlList *L, int value) {
     }
     return -1;
 }
-
+/**
+ * index和length 比实际索引>1
+ *  index: 0 1 2 3
+ *  data:  1 2 3 4
+ * index:  0 1 2 3 4
+ *  data:  1 2 3 4 5
+ */
 void reverse_list(SqlList *L) {
+    for (int i=0; i<L->length/2; i++) {
+        int temp=L->data[i];
+        L->data[i]=L->data[L->length-1-i];
+        L->data[L->length-1-i]=temp;
+    }
 };
-
+/**
+ * index和length 比实际索引>1
+ * data:  0 1 2 3 4
+ * index: 1 2 3 4 5
+ */
 int delete_range(SqlList *L, int i, int j) {
+    if (i<1 || i>L->length || j<1 || j>L->length) {
+        return 0;
+    }
+    if (i>=j) {
+        return 0;
+    }
+    for (int k = i-1; k <= j-1; ++k) {
+       L->data[k] = L->data[k+(j-i+1)];
+    }
+    L->length -= j-i+1;
     return 1;
 };
 
+/**
+ * 分类 使左边的都小于右边的 分为两部分 类似于快速排序的一次
+ */
 int partition(SqlList *L, int low, int high) {
-    return 1;
+    int pivot=L->data[low];
+    while (low<high) {
+        while (low<high && L->data[high]>=pivot) {
+            high--;
+        }
+        L->data[low]=L->data[high];
+        while (low<high && L->data[low]<=pivot) {
+            low++;
+        }
+        L->data[high]=L->data[low];
+    }
+    L->data[low]=pivot;
+    return low;
 };
 
 
