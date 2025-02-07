@@ -4,5 +4,5 @@ project(algorithm C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(algorithm main.c
-        SqlList/SqlList.c
-        SqlList/SqlList.h)
+        sqList/SqList.c
+        sqList/SqList.h)

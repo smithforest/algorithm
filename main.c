@@ -1,4 +1,4 @@
-#include "SqlList/SqlList.h"
+#include "sqList/SqList.h"
 
 int main(void) {
     SqlList L;
