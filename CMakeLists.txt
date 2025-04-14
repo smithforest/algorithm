@@ -3,7 +3,7 @@ project(algorithm C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(algorithm sqlListMain.c
+add_executable(algorithm sequentialMain.c
         sqList/SqList.c
         sqList/SqList.h
         linkedList/SingleLinkedList.c

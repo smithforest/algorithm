@@ -245,7 +245,7 @@ ListNode *find_kth_to_tail(SingleLinkedList L, int k) {
  */
 int hasCycle(SingleLinkedList L) {
     if (!L || L->next == NULL) {
-        return NULL;
+        return 0;
     }
     ListNode *p = L->next;
     ListNode*q=p->next;
