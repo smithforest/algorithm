@@ -18,6 +18,8 @@ int deleteElement(SqlList *L, int index);
 void reverse_list(SqlList *L);
 // 删除区间
 int delete_range(SqlList *L, int i, int j);
+//删除区间2.0写法
+int delete_range2(SqlList *L ,int i,int j);
 // 分组链表
 int partition(SqlList *L, int low, int high);
 

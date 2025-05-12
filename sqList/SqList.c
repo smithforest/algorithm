@@ -90,6 +90,19 @@ int delete_range(SqlList *L, int i, int j) {
     return 1;
 };
 
+//删除区间2.0写法
+int delete_range2(SqlList *L ,int i,int j) {
+    if (i<1 || i>L->length || j<1 || j>L->length||i>j) {
+        return 0;
+    }
+    for (int k=i-1;k<=j-1;k++) {
+        L->data[k]=L->data[k+j-i+1];
+    }
+    L->length -= j-i+1;
+    return 1;
+}
+
+
 /**
  * 分类 使左边的都小于右边的 分为两部分 类似于快速排序的一次
  */
